@@ -6,6 +6,12 @@ Example project to demonstrate how interrupting Patrol tests when using flavors,
 This leads to the AndroidX Orchestrator apps required by Patrol to remain on the device preventing re-running the tests after interruption without manual cleanup.
 
 
+Execute the tests with:
+
+```shell
+$ patrol test -t integration_test/example_test.dart --flavor=dev
+```
+
 Relevant error:
 
 ```
