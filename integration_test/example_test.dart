@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -7,28 +6,24 @@ import 'package:patrol/patrol.dart';
 import 'package:patrol_bug_2621/main.dart' as app;
 
 void main() {
-  patrolTest(
-    'counter state is the same after going to home and switching apps',
-    ($) async {
-      // Replace later with your app's main widget
-      await $.pumpWidgetAndSettle(
-        app.MyApp()
-      );
+  patrolTest('counter state is the same after going to home and switching apps', (
+    $,
+  ) async {
+    // Replace later with your app's main widget
+    await $.pumpWidgetAndSettle(app.MyApp());
 
-      int i =0;
+    int i = 0;
 
-    while (i <1000){
-        ++i;
-        final button = find.byType(FloatingActionButton);
-        
-        await $.tester.tap(button);
-        await $.tester.pumpAndSettle();
+    // Ensure the test will execute for at least as long the Android app test will compile
+    while (i < 1000) {
+      ++i;
+      final button = find.byType(FloatingActionButton);
 
-        final updatedTxt = find.text(i.toString());
-        expect(updatedTxt, findsOne);
+      await $.tester.tap(button);
+      await $.tester.pumpAndSettle();
 
-      }
-
-    },
-  );
+      final updatedTxt = find.text(i.toString());
+      expect(updatedTxt, findsOne);
+    }
+  });
 }

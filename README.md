@@ -1,16 +1,17 @@
 # patrol_bug_2621
 
-A new Flutter project.
+Example project to demonstrate how interrupting Patrol tests when using flavors, does not stop the execution of the tests on the Android device.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+This leads to the AndroidX Orchestrator apps required by Patrol to remain on the device preventing re-running the tests after interruption without manual cleanup.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Relevant error:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+        : > Task :app:connectedDevDebugAndroidTest FAILED
+        Test run failed to complete. Unable to find instrumentation info for: ComponentInfo{androidx.test.orchestrator/androidx.test.orchestrator.AndroidTestOrchestrator}. onError: commandError=true message=INSTRUMENTATION_FAILED: androidx.test.orchestrator/androidx.test.orchestrator.AndroidTestOrchestrator
+
+        FAILURE: Build failed with an exception.
+
+```
